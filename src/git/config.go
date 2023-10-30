@@ -20,3 +20,7 @@ func AddConfig(gitConfig GitConfig) error {
 
 	return cli.RunCmd("git", args...)
 }
+
+func UnsetConfig(key string) error {
+	return cli.RunCmd("git", "config", "--unset-all", key)
+}
