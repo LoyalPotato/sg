@@ -27,7 +27,6 @@ And to learn more about the stacking workflow: https://stacking.dev`
 func rootCmd() cobra.Command {
 	rootCmd := cobra.Command{
 		Use:           "sg",
-		Aliases:       []string{"stacked-guide"},
 		Short:         rootDesc,
 		Long:          long(rootDesc, rootInfo),
 		SilenceErrors: true,
