@@ -1,6 +1,14 @@
 package cmd
 
-import "github.com/spf13/cobra"
+import (
+	"fmt"
+	"os"
+
+	"github.com/LoyalPotato/stacked-guide/src/git"
+	gittown "github.com/LoyalPotato/stacked-guide/src/git-town"
+	"github.com/LoyalPotato/stacked-guide/src/messages"
+	"github.com/spf13/cobra"
+)
 
 const rootDesc = "Interactive guide to learn stacking workflow"
 
@@ -24,6 +32,17 @@ func rootCmd() cobra.Command {
 		Long:          long(rootDesc, rootInfo),
 		SilenceErrors: true,
 		SilenceUsage:  true,
+		PersistentPreRun: func(cmd *cobra.Command, args []string) {
+			if err := git.IsGitRepo(); err != nil {
+				fmt.Println(messages.NotGitEnv)
+				os.Exit(1)
+			}
+
+			if !gittown.IsInstalled() {
+				fmt.Println(messages.NoGitTown)
+				os.Exit(1)
+			}
+		},
 	}
 
 	return rootCmd
