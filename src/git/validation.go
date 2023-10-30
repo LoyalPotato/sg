@@ -1,10 +1,9 @@
 package git
 
 import (
-	"os/exec"
+	"github.com/LoyalPotato/stacked-guide/src/cli"
 )
 
 func IsGitRepo() error {
-	subProcess := exec.Command("git", "rev-parse", "--git-dir")
-	return subProcess.Run()
+	return cli.RunCmd("git", "rev-parse", "--git-dir")
 }
