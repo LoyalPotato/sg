@@ -1,9 +1,12 @@
 package cmd
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/spf13/cobra"
+)
 
 func Execute() error {
 	rootCmd := rootCmd()
+	rootCmd.AddCommand(cleanup)
 
 	rootCmd.AddGroup(&cobra.Group{
 		ID:    "setup",
