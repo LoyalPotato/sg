@@ -8,6 +8,9 @@ func Execute() error {
 	rootCmd.AddGroup(&cobra.Group{
 		ID:    "setup",
 		Title: "Setup:",
+	}, &cobra.Group{
+		ID:    "cleanup",
+		Title: "Cleanup: ",
 	})
 
 	return rootCmd.Execute()
