@@ -28,12 +28,18 @@ var cleanup = &cobra.Command{
 }
 
 func runCleanup() {
-	fmt.Println("Removing token...")
-	err := gittown.RemoveGithubToken()
+	fmt.Println(messages.Cleanup_Removing)
+	exists, err := gittown.RemoveGithubToken()
 	if err != nil {
 		fmt.Println(messages.Cleanup_Error)
 		os.Exit(1)
-	} else {
-		fmt.Println(messages.Cleanup_Success)
 	}
+
+	msg := messages.Cleanup_Success
+
+	if !exists {
+		msg = messages.Cleanup_None
+	}
+
+	fmt.Println(msg)
 }
