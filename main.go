@@ -4,10 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/LoyalPotato/stacked-guide/src/cmd"
+	"github.com/LoyalPotato/sg/src/cmd"
 )
-
-//import "github.com/LoyalPotato/stacked-guide/src/cmd"
 
 func main() {
 

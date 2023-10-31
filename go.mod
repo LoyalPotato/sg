@@ -1,4 +1,4 @@
-module github.com/LoyalPotato/stacked-guide
+module github.com/LoyalPotato/sg
 
 go 1.21.3
 

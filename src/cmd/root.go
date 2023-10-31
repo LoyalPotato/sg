@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/LoyalPotato/stacked-guide/src/git"
-	gittown "github.com/LoyalPotato/stacked-guide/src/git-town"
-	"github.com/LoyalPotato/stacked-guide/src/messages"
+	"github.com/LoyalPotato/sg/src/internal/git"
+	gittown "github.com/LoyalPotato/sg/src/internal/git-town"
+	"github.com/LoyalPotato/sg/src/internal/messages"
 	"github.com/spf13/cobra"
 )
 
