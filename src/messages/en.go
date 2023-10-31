@@ -1,8 +1,10 @@
 package messages
 
 const (
-	Cleanup_Success = "Everything was reset."
-	Cleanup_Error   = "Unable to run command. If error continues, try manual reset."
+	Cleanup_Removing = "Removing config..."
+	Cleanup_Success  = "Everything was reset."
+	Cleanup_None     = "No config exists for that value."
+	Cleanup_Error    = "Unable to run command. If error continues, try manual reset."
 
 	NotGitEnv = "Not running in a git repository.\nUse git init to initialize a repository in the current folder."
 	NoGitTown = "Git town is not installed.\nPlease follow the instructions on the installation page of git town."
