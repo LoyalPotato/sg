@@ -21,6 +21,21 @@ func AddConfig(gitConfig GitConfig) error {
 	return cli.RunCmd("git", args...)
 }
 
+func GetConfig(key string) (string, error) {
+	out, err := cli.RunCmdWithOutput("git", "config", "--get", key)
+
+	return string(out), err
+}
+
+func ConfigExists(key string) bool {
+	_, err := cli.RunCmdWithOutput("git", "config", "--get", key)
+	if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+		return false
+	}
+
+	return true
+}
+
 func UnsetConfig(key string) error {
 	return cli.RunCmd("git", "config", "--unset-all", key)
 }
