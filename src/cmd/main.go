@@ -6,6 +6,7 @@ import (
 
 func Execute() error {
 	rootCmd := rootCmd()
+	rootCmd.AddCommand(setup)
 	rootCmd.AddCommand(cleanup)
 
 	rootCmd.AddGroup(&cobra.Group{
