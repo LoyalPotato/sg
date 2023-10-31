@@ -1,5 +1,8 @@
 package gittown
 
+import (
+	"github.com/LoyalPotato/sg/src/internal/git"
+)
 
 const tokenKey = "git-town.github-token"
 

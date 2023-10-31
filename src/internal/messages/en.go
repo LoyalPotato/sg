@@ -11,6 +11,6 @@ const (
 
 	Setup_TokenInfo   = "In order to make changes to your repository we'll need to set a configuration with an access token.\nThis can be done by going in this link %s and following the instructions."
 	Setup_TokenInsert = "Insert Token: "
-	Setup_Finish      = "Setup concluded! To get started run %q"
+	Setup_Finish      = "Setup concluded! To get started run %s\n"
 	Setup_Error       = "There was an issue performing the setup."
 )

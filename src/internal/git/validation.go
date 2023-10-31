@@ -1,7 +1,7 @@
 package git
 
 import (
-	"github.com/LoyalPotato/stacked-guide/src/cli"
+	"github.com/LoyalPotato/sg/src/cli"
 )
 
 func IsGitRepo() error {

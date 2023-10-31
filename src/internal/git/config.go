@@ -3,8 +3,9 @@ package git
 import (
 	"fmt"
 
-	"github.com/LoyalPotato/stacked-guide/src/cli"
-	"github.com/LoyalPotato/stacked-guide/src/styles"
+	"github.com/LoyalPotato/sg/src/cli"
+	"github.com/LoyalPotato/sg/src/internal/styles"
+	"github.com/LoyalPotato/sg/src/internal/utils"
 )
 
 type GitConfig struct {
@@ -15,7 +16,7 @@ type GitConfig struct {
 func AddConfig(gitConfig GitConfig) error {
 	args := []string{"config", "--add", gitConfig.Key, gitConfig.Value}
 	if gitConfig.LogRun {
-		fmt.Printf("Inserting %s into config\n", styles.FaintItalic(args[2]))
+		fmt.Printf("Inserting %s into config\n", styles.Faint(args[2]))
 	}
 
 	return cli.RunCmd("git", args...)
@@ -29,11 +30,8 @@ func GetConfig(key string) (string, error) {
 
 func ConfigExists(key string) bool {
 	_, err := cli.RunCmdWithOutput("git", "config", "--get", key)
-	if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-		return false
-	}
 
-	return true
+	return utils.GetExitCode(err) != 1
 }
 
 func UnsetConfig(key string) error {
