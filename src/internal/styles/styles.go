@@ -7,4 +7,6 @@ var (
 	Italic      = promptui.Styler(promptui.FGItalic)
 	Faint       = promptui.Styler(promptui.FGFaint)
 	FaintItalic = promptui.Styler(promptui.FGFaint, promptui.FGItalic)
+
+	Green = promptui.Styler(promptui.FGGreen)
 )
