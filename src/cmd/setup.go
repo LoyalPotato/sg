@@ -63,9 +63,10 @@ func getTokenPrompt() promptui.Prompt {
 func getMainBranch() string {
 	fmt.Println(messages.Setup_MainBranchInfo)
 	prompt := promptui.Prompt{
-		Label:     messages.Setup_MainBranchConfig,
-		Default:   "main",
-		AllowEdit: true,
+		Label:       messages.Setup_MainBranchConfig,
+		Default:     "main",
+		AllowEdit:   true,
+		HideEntered: true,
 		Validate: func(s string) error {
 			if s == "" {
 				return errors.New(messages.Empty_String)
