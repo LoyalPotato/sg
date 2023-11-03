@@ -14,7 +14,8 @@ const cleanupDesc = "Use this to reset what setup did."
 const cleanupInfo = `
 Here's a list of what that is:
 
-- Remove token from git config
+- Remove token from git config (use: git town)
+- Remove main branch config (use: git town)
 `
 
 var cleanup = &cobra.Command{
@@ -30,14 +31,15 @@ var cleanup = &cobra.Command{
 func runCleanup() {
 	fmt.Println(messages.Cleanup_Removing)
 	exists, err := gittown.RemoveGithubToken()
-	if err != nil {
+	mainConfExists, mainConfErr := gittown.RemoveMainBranchConfig()
+	if err != nil || mainConfErr != nil {
 		fmt.Println(messages.Cleanup_Error)
 		os.Exit(1)
 	}
 
 	msg := messages.Cleanup_Success
 
-	if !exists {
+	if !exists && !mainConfExists {
 		msg = messages.Cleanup_None
 	}
 
