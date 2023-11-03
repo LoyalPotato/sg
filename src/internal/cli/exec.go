@@ -1,9 +1,19 @@
 package cli
 
-import "os/exec"
+import (
+	"io"
+	"os/exec"
+)
 
 func RunCmd(cmd string, args ...string) error {
 	subProcess := exec.Command(cmd, args...)
+	return subProcess.Run()
+}
+
+func RunCmdCustomStdOut(cmd string, out io.Writer, err io.Writer, args ...string) error {
+	subProcess := exec.Command(cmd, args...)
+	subProcess.Stdout = out
+	subProcess.Stderr = err
 	return subProcess.Run()
 }
 
