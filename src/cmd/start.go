@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const startShort = "Command to start guide!"
+const startShort = "Command to start guide"
 
 const startLong = `
 You'll be guided through a story and learn how to apply the stacking workflow.
