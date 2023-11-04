@@ -3,6 +3,7 @@
 This cli tool's purpose is to offer an interactive experience to learn how the stacking workflow, well, works.
 
 You can find the generated documentation in `.md` and `man pages` format in the [docs](./docs) directory.
+
 ## Resources
 
 - [High-velocity software development using nested Git branches](https://medium.com/hackernoon/high-velocity-software-development-using-nested-git-branches-69bfc2d1e54d)
