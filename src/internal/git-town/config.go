@@ -14,6 +14,10 @@ func AddMainBranchConfig(brachName string, logRun bool) error {
 	})
 }
 
+func GetMainBranchConfig() (string, error) {
+	return git.GetConfig(MainBranchKey)
+}
+
 func RemoveMainBranchConfig() (bool, error) {
 	exists := git.ConfigExists(MainBranchKey)
 
