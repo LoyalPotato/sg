@@ -83,10 +83,10 @@ func (s *Start) printStory() {
 }
 
 func (s *Start) hack(match string, branchName string) {
-	fmt.Printf(messages.Start_Hack, styles.Green(match))
+	fmt.Printf(messages.Start_Hack, styles.Faint(s.mainBranch), styles.Green(match))
 	cmdMatch(match)
 	gittown.Hack(branchName)
-	fmt.Println(messages.Start_Hack_Finished)
+	fmt.Printf(messages.Start_Hack_Finished, styles.Faint(s.mainBranch))
 }
 
 func (s *Start) refactor() {
@@ -101,7 +101,7 @@ func (s *Start) bugfix() {
 	fmt.Printf(messages.Start_Bugfix, styles.Green(s.bugAppend))
 	cmdMatch(s.bugAppend)
 	gittown.Append(s.bugfixBranch)
-	fmt.Println(messages.Start_Bugfix_Tree)
+	fmt.Printf(messages.Start_Bugfix_Tree, s.mainBranch)
 	fmt.Println(messages.Start_Bugfix_Changes)
 	confirmChanges()
 	s.newPr()
