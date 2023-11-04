@@ -9,5 +9,5 @@ import (
 const gittownRoot = "git-town"
 
 func runGitTown(args ...string) error {
-	return cli.RunCmdCustomStdOut(gittownRoot, os.Stdout, nil, args...)
+	return cli.RunCmdCustomStdOut(gittownRoot, os.Stdout, os.Stderr, args...)
 }
