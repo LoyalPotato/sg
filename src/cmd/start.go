@@ -26,9 +26,10 @@ The story will teach you:
 `
 
 var start = &cobra.Command{
-	Use:   "start",
-	Short: startShort,
-	Long:  long(startShort, startLong),
+	Use:               "start",
+	Short:             startShort,
+	Long:              long(startShort, startLong),
+	DisableAutoGenTag: true,
 	PreRun: func(cmd *cobra.Command, args []string) {
 		exists := git.ConfigExists(gittown.TokenKey)
 		existsMain := git.ConfigExists(gittown.MainBranchKey)

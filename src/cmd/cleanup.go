@@ -19,10 +19,11 @@ Here's a list of what that is:
 `
 
 var cleanup = &cobra.Command{
-	Use:     "cleanup",
-	Short:   cleanupDesc,
-	Long:    long(cleanupDesc, cleanupInfo),
-	GroupID: "management",
+	Use:               "cleanup",
+	Short:             cleanupDesc,
+	Long:              long(cleanupDesc, cleanupInfo),
+	GroupID:           "management",
+	DisableAutoGenTag: true,
 	Run: func(cmd *cobra.Command, args []string) {
 		runCleanup()
 	},

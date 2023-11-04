@@ -22,11 +22,12 @@ This includes:
 `
 
 var setup = &cobra.Command{
-	Use:     "setup",
-	Short:   setupShort,
-	Long:    long(setupShort, setupLong),
-	Run:     runSetup,
-	GroupID: "management",
+	Use:               "setup",
+	Short:             setupShort,
+	Long:              long(setupShort, setupLong),
+	Run:               runSetup,
+	DisableAutoGenTag: true,
+	GroupID:           "management",
 }
 
 func runSetup(cmd *cobra.Command, args []string) {

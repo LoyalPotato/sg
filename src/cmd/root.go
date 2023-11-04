@@ -26,11 +26,12 @@ And to learn more about the stacking workflow: https://stacking.dev`
 
 func rootCmd() cobra.Command {
 	rootCmd := cobra.Command{
-		Use:           "sg",
-		Short:         rootDesc,
-		Long:          long(rootDesc, rootInfo),
-		SilenceErrors: true,
-		SilenceUsage:  true,
+		Use:               "sg",
+		Short:             rootDesc,
+		Long:              long(rootDesc, rootInfo),
+		SilenceErrors:     true,
+		SilenceUsage:      true,
+		DisableAutoGenTag: true,
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			if err := git.IsGitRepo(); err != nil {
 				fmt.Println(messages.NotGitEnv)
