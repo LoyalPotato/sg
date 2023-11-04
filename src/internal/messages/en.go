@@ -26,4 +26,27 @@ const (
 	Setup_Error            = "There was an issue performing the setup."
 
 	Start_No_Config = "The correct config was not found.\nBe sure that you've run '%s' first to make sure everything is configured correctly.\n"
+	Start_Story     = `Let's start by defining the story for our workflow.
+	
+We have a new feature that we need to develop. But there are some other things that we need to do before starting the implementation:
+
+- Clean up some code
+- Fix a bug preventing the new feature from working 100%
+- Implement the feature
+	
+We should clean up first, to have a good starting base!`
+	Start_Hack = `Let's create a new branch from main to start working on the cleanup.
+This can be done with the following command from git-town:
+%s
+Type it out below to run it :)
+`
+	Start_Hack_Finished = `Well done!
+This command just created your new feature from the main branch you setup and checked it out.`
+	Start_Refactor_Changes = `Now make some changes to any file.
+Just something simple like creating a new file and writing "Refactoring", for example.
+Once you're finished, proceed with the guide.`
+	Start_Refactor_Finished = `Now all that's left for this step is to finish creating the PR, through the link opened.
+If the link didn't open in your default browser, manually open it to conclude the creation of the PR.
+
+And we've successfully put our first changes for review!`
 )
