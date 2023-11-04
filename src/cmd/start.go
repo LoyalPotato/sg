@@ -77,6 +77,10 @@ func runStart(cmd *cobra.Command, args []string) {
 	start.printStory()
 	start.refactor()
 	start.bugfix()
+	start.feature()
+	start.shipRefactor()
+	start.finish()
+}
 
 func (s *Start) printStory() {
 	fmt.Println(messages.Start_Story)
