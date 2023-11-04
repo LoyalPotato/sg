@@ -49,4 +49,17 @@ Once you're finished, proceed with the guide.`
 If the link didn't open in your default browser, manually open it to conclude the creation of the PR.
 
 And we've successfully put our first changes for review!`
+	Start_Bugfix = `We can now start working on the bugfix on top of these changes while they are still in review.
+To build on top of the previous changes, in the refactor branch still, we use the following git-town command:
+%s
+Give it a go:`
+	Start_Bugfix_Tree = `This is what the branch hierarchy is at the moment for git-town
+	<main>
+  \
+   1-refactor
+     \
+      2-bugfix`
+	Start_Bugfix_Changes  = "Again, just make a small change just so that we can commit something and create a new PR."
+	Start_Bugfix_Finished = "Since git-town is aware that %s is a child of %s, it'll create the PR against the parent, %s\n"
+
 )
