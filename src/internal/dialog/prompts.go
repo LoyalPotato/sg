@@ -36,3 +36,23 @@ func Match(args *MatchPromptArgs) (string, error) {
 	return res, err
 }
 
+// Confirm prompt
+//
+// Returns bool value, if confirmed, and error value
+func Confirm(label string) (bool, error) {
+	prompt := promptui.Prompt{
+		Label:       label,
+		IsConfirm:   true,
+		HideEntered: true,
+	}
+	_, err := prompt.Run()
+
+	switch err {
+	case promptui.ErrAbort:
+		return false, err
+	case promptui.ErrInterrupt:
+		os.Exit(utils.EXIT_CODE_INTERRUPT)
+	}
+	return true, err
+}
+
