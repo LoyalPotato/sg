@@ -2,6 +2,7 @@ package dialog
 
 import (
 	"errors"
+	"os"
 
 	"github.com/LoyalPotato/sg/src/internal/messages"
 	"github.com/LoyalPotato/sg/src/internal/utils"
@@ -56,3 +57,34 @@ func Confirm(label string) (bool, error) {
 	return true, err
 }
 
+type TextPromptArgs struct {
+	Label string
+
+	Default string
+
+	AllowEdit bool
+
+	Validate promptui.ValidateFunc
+
+	Mask rune
+
+	HideEntered bool
+
+	Templates *promptui.PromptTemplates
+}
+
+// Text prompt
+func Text(args *TextPromptArgs) (output string, err error) {
+	prompt := promptui.Prompt{
+		Label:       args.Label,
+		AllowEdit:   args.AllowEdit,
+		HideEntered: args.HideEntered,
+		Mask:        args.Mask,
+		Validate:    args.Validate,
+		Templates:   args.Templates,
+	}
+
+	output, err = prompt.Run()
+
+	return output, err
+}
