@@ -109,6 +109,13 @@ func (s *Start) bugfix() {
 }
 
 func (s *Start) newPr() {
+	s.commitAll()
+	if err := gittown.PullRequest(); err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
+}
+
+func (s *Start) commitAll() {
 	var err error
 
 	err = git.AddAllChanges()
@@ -135,10 +142,6 @@ func (s *Start) newPr() {
 
 	if err != nil {
 		utils.Exit(fmt.Sprintf(messages.Error_Git_Commit, err), 1)
-	}
-
-	if gittown.PullRequest() != nil {
-		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
 	}
 }
 
