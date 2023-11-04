@@ -4,13 +4,17 @@
 
 For the first release, what are the tasks that need to be done.
 
-- [ ] Make sure git-town is working
-- [ ] Test how to have running interactivity
-- [ ] Test if it's running in a git repository
-  - Suggest `git init` or wtv the command is
-- [ ] Get the setup command working
-- [ ] Setup Help command
-- [ ] Add script for compiling
+- [x] Make sure git-town is working
+I can't work with the go package. It doesn't seem like it was made for that :(
+
+- [x] Test how to have running interactivity
+- [x] Test if it's running in a git repository
+  - [x] Suggest `git init` or wtv the command is
+  - [x] This should be done for all commands
+- [x] Get the setup command working
+- [x] Setup Help command
+- [x] In setup, ask for what the main branch is. Gittown needs this configured else it'll fail when running the cmd in the cli?
+- [ ] Add goreleaser
 
 ### Later
 
