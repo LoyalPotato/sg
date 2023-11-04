@@ -1,7 +1,12 @@
 package cmd
 
 import (
+	"fmt"
+
+	"github.com/LoyalPotato/sg/src/internal/messages"
+	"github.com/LoyalPotato/sg/src/internal/utils"
 	"github.com/spf13/cobra"
+	"github.com/spf13/cobra/doc"
 )
 
 func Execute() error {
@@ -14,6 +19,17 @@ func Execute() error {
 		ID:    "management",
 		Title: "Management:",
 	})
+
+	header := &doc.GenManHeader{
+		Title:   "SG",
+		Section: "1",
+	}
+	if err := doc.GenManTree(&rootCmd, header, "/tmp"); err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
+	if err := doc.GenMarkdownTree(&rootCmd, "/tmp"); err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
 
 	return rootCmd.Execute()
 }
