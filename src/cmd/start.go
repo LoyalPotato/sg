@@ -156,13 +156,12 @@ func cmdMatch(match string) {
 	}
 }
 
-// TODO: This loop isn't working
-// It won't exit with ^C
-// After doing ^C and it saying no changes, if I make the changes finally, it's not reading correctly
 func confirmChanges() {
 	dialog.Confirm("Finished")
-	for changes, _ := git.GetNumOfChanges(); changes < 1; {
+	changes, _ := git.GetNumOfChanges()
+	for changes < 1 {
 		fmt.Println(messages.No_Changes)
 		dialog.Confirm("Finished")
+		changes, _ = git.GetNumOfChanges()
 	}
 }
