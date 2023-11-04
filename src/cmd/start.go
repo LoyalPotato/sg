@@ -41,6 +41,7 @@ var start = &cobra.Command{
 }
 
 type Start struct {
+	mainBranch     string
 	refactorBranch string
 	bugfixBranch   string
 	featureBranch  string
@@ -56,7 +57,10 @@ func startCtor() Start {
 	const bugfixBranch = "2-bugfix"
 	const featureBranch = "3-feature"
 
+	mainBranch, _ := gittown.GetMainBranchConfig()
+
 	return Start{
+		mainBranch:     utils.RemoveNonPrintables(mainBranch),
 		refactorBranch: refactorBranch,
 		bugfixBranch:   bugfixBranch,
 		featureBranch:  featureBranch,
