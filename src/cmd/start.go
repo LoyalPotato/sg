@@ -167,26 +167,6 @@ func (s *Start) shipRefactor() {
 	)
 	cmdMatch(s.refactorShip)
 
-	// BUG: Ship is failing here :(
-	// I believe it's because it's trying to open the vim editor while on running the program.
-	/*
-		[main] git merge --squash 1-refactor
-		Updating 6ff43ba..df9634b
-		Fast-forward
-		Squash commit -- not updating HEAD
-		 sg/newfile.md | 1 +
-		 sg/ref.md     | 1 +
-		 2 files changed, 2 insertions(+)
-		 create mode 100644 sg/newfile.md
-		 create mode 100644 sg/ref.md
-
-		[main] git commit
-		Vim: Error reading input, exiting...
-		Vim: Finished.
-
-		Error: exit status 1
-		Auto-aborting...
-	*/
 	err := gittown.Ship(s.refactorBranch)
 
 	if err != nil {
