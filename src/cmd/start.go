@@ -108,6 +108,12 @@ func (s *Start) bugfix() {
 	fmt.Printf(messages.Start_Bugfix_Finished, styles.Green(s.bugfixBranch), styles.Green(s.refactorBranch), styles.Green(s.refactorBranch))
 }
 
+func (s *Start) finish() {
+	fmt.Printf(messages.Start_Finished,
+		styles.FaintItalic("https://github.com/LoyalPotato/sg"),
+		styles.Green("sync"))
+}
+
 func (s *Start) newPr() {
 	s.commitAll()
 	if err := gittown.PullRequest(); err != nil {
