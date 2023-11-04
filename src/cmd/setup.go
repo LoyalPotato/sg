@@ -26,7 +26,7 @@ var setup = &cobra.Command{
 	Short:   setupShort,
 	Long:    long(setupShort, setupLong),
 	Run:     runSetup,
-	GroupID: "setup",
+	GroupID: "management",
 }
 
 func runSetup(cmd *cobra.Command, args []string) {

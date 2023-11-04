@@ -22,7 +22,7 @@ var cleanup = &cobra.Command{
 	Use:     "cleanup",
 	Short:   cleanupDesc,
 	Long:    long(cleanupDesc, cleanupInfo),
-	GroupID: "cleanup",
+	GroupID: "management",
 	Run: func(cmd *cobra.Command, args []string) {
 		runCleanup()
 	},

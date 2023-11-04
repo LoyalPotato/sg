@@ -11,11 +11,8 @@ func Execute() error {
 	rootCmd.AddCommand(start)
 
 	rootCmd.AddGroup(&cobra.Group{
-		ID:    "setup",
-		Title: "Setup:",
-	}, &cobra.Group{
-		ID:    "cleanup",
-		Title: "Cleanup: ",
+		ID:    "management",
+		Title: "Management:",
 	})
 
 	return rootCmd.Execute()
