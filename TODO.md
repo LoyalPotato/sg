@@ -14,7 +14,7 @@ I can't work with the go package. It doesn't seem like it was made for that :(
 - [x] Get the setup command working
 - [x] Setup Help command
 - [x] In setup, ask for what the main branch is. Gittown needs this configured else it'll fail when running the cmd in the cli?
-- [ ] Add goreleaser
+- [x] Add goreleaser
 
 ### Later
 
