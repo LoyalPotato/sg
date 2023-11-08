@@ -18,7 +18,7 @@ I can't work with the go package. It doesn't seem like it was made for that :(
 
 ### Later
 
-- [ ] Man pages, markdown docs [cobra](https://github.com/spf13/cobra/blob/main/site/content/docgen/_index.md)
+- [x] Man pages, markdown docs [cobra](https://github.com/spf13/cobra/blob/main/site/content/docgen/_index.md)
 
 ## v2
 
