@@ -69,9 +69,27 @@ issues:
     - text: (cobra.Command|subshell.Options|gitea.*Options|github.*Options|gitlab.*Options|godog.Options) is missing fields?
       linters:
         - exhaustruct
-    # - linters:
-    #     - exhaustruct
-    #   text: (survey.MultiSelect|survey.Select) is missing fields
+    - linters:
+        - exhaustruct
+      text: promptui.(Prompt|PromptTemplates) is missing fields
+    - linters:
+        - exhaustruct
+      text: doc.(GenManHeader) is missing fields
+    - linters:
+        - exhaustruct
+      text: dialog.(TextPromptArgs) is missing fields
     - linters:
         - predeclared
       text: package name print has same name as predeclared identifier
+    - path: src/internal/git-town/token.go # it's named as token, but is just the key
+      text: "G101: Potential hardcoded credentials"
+      linters:
+        - gosec
+    - path: src/internal/styles/
+      linters:
+        - gochecknoglobals
+    - path: src/internal/messages/ # easier to read message name
+      text: (don't|should not) use underscores
+      linters:
+        - revive
+        - stylecheck
