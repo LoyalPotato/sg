@@ -18,15 +18,18 @@ Here's a list of what that is:
 - Remove main branch config (use: git town)
 `
 
-var cleanup = &cobra.Command{
-	Use:               "cleanup",
-	Short:             cleanupDesc,
-	Long:              long(cleanupDesc, cleanupInfo),
-	GroupID:           "management",
-	DisableAutoGenTag: true,
-	Run: func(cmd *cobra.Command, args []string) {
-		runCleanup()
-	},
+func cleanupCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:               "cleanup",
+		Short:             cleanupDesc,
+		Long:              long(cleanupDesc, cleanupInfo),
+		GroupID:           "management",
+		DisableAutoGenTag: true,
+		Run: func(cmd *cobra.Command, args []string) {
+			runCleanup()
+		},
+	}
+	return cmd
 }
 
 func runCleanup() {

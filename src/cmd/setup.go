@@ -21,13 +21,17 @@ This includes:
 - What the main branch is (use: git town)
 `
 
-var setup = &cobra.Command{
-	Use:               "setup",
-	Short:             setupShort,
-	Long:              long(setupShort, setupLong),
-	Run:               runSetup,
-	DisableAutoGenTag: true,
-	GroupID:           "management",
+func setupCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:               "setup",
+		Short:             setupShort,
+		Long:              long(setupShort, setupLong),
+		Run:               runSetup,
+		DisableAutoGenTag: true,
+		GroupID:           "management",
+	}
+
+	return cmd
 }
 
 func runSetup(cmd *cobra.Command, args []string) {

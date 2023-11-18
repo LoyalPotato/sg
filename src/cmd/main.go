@@ -11,9 +11,9 @@ import (
 
 func Execute() error {
 	rootCmd := rootCmd()
-	rootCmd.AddCommand(setup)
-	rootCmd.AddCommand(cleanup)
-	rootCmd.AddCommand(start)
+	rootCmd.AddCommand(setupCmd())
+	rootCmd.AddCommand(cleanupCmd())
+	rootCmd.AddCommand(startCmd())
 
 	rootCmd.AddGroup(&cobra.Group{
 		ID:    "management",

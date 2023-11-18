@@ -25,20 +25,23 @@ The story will teach you:
 - Ship feature branches
 `
 
-var start = &cobra.Command{
-	Use:               "start",
-	Short:             startShort,
-	Long:              long(startShort, startLong),
-	DisableAutoGenTag: true,
-	PreRun: func(cmd *cobra.Command, args []string) {
-		exists := git.ConfigExists(gittown.TokenKey)
-		existsMain := git.ConfigExists(gittown.MainBranchKey)
-		if !exists || !existsMain {
-			fmt.Printf(messages.Start_No_Config, styles.Green("sg setup"))
-			os.Exit(1)
-		}
-	},
-	Run: runStart,
+func startCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:               "start",
+		Short:             startShort,
+		Long:              long(startShort, startLong),
+		DisableAutoGenTag: true,
+		PreRun: func(cmd *cobra.Command, args []string) {
+			exists := git.ConfigExists(gittown.TokenKey)
+			existsMain := git.ConfigExists(gittown.MainBranchKey)
+			if !exists || !existsMain {
+				fmt.Printf(messages.Start_No_Config, styles.Green("sg setup"))
+				os.Exit(1)
+			}
+		},
+		Run: runStart,
+	}
+	return cmd
 }
 
 type Start struct {
