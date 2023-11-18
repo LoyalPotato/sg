@@ -8,6 +8,7 @@ import (
 	gittown "github.com/LoyalPotato/sg/src/internal/git-town"
 	"github.com/LoyalPotato/sg/src/internal/messages"
 	"github.com/LoyalPotato/sg/src/internal/styles"
+	"github.com/LoyalPotato/sg/src/internal/utils"
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 )
@@ -34,7 +35,7 @@ func setupCmd() *cobra.Command {
 	return cmd
 }
 
-func runSetup(cmd *cobra.Command, args []string) {
+func runSetup(_ *cobra.Command, _ []string) {
 	fmt.Printf(messages.Setup_TokenInfo, styles.FaintItalic("https://github.com/settings/tokens"))
 	prompt := getTokenPrompt()
 	token, err := prompt.Run()
@@ -43,8 +44,15 @@ func runSetup(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 	branchName := getMainBranch()
-	gittown.AddGithubToken(token, true)
-	gittown.AddMainBranchConfig(branchName, true)
+	err = gittown.AddGithubToken(token, true)
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
+
+	err = gittown.AddMainBranchConfig(branchName, true)
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
 	fmt.Printf("\n"+messages.Setup_Finish, styles.Green("sg start"))
 }
 

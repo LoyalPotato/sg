@@ -76,7 +76,7 @@ func startCtor() Start {
 	}
 }
 
-func runStart(cmd *cobra.Command, args []string) {
+func runStart(_ *cobra.Command, _ []string) {
 	start := startCtor()
 	start.printStory()
 	start.refactor()
@@ -93,7 +93,12 @@ func (s *Start) printStory() {
 func (s *Start) hack(match string, branchName string) {
 	fmt.Printf(messages.Start_Hack, styles.Faint(s.mainBranch), styles.Green(match))
 	cmdMatch(match)
-	gittown.Hack(branchName)
+
+	err := gittown.Hack(branchName)
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
+
 	fmt.Printf(messages.Start_Hack_Finished, styles.Faint(s.mainBranch))
 }
 
@@ -108,7 +113,10 @@ func (s *Start) refactor() {
 func (s *Start) bugfix() {
 	fmt.Printf(messages.Start_Bugfix, styles.Green(s.bugAppend))
 	cmdMatch(s.bugAppend)
-	gittown.Append(s.bugfixBranch)
+	err := gittown.Append(s.bugfixBranch)
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
 	fmt.Printf(messages.Start_Bugfix_Tree, s.mainBranch)
 	fmt.Println(messages.Start_Bugfix_Changes)
 	confirmChanges()
@@ -117,14 +125,17 @@ func (s *Start) bugfix() {
 }
 
 func (s *Start) feature() {
+	var err error
 	fmt.Printf(messages.Start_Feature, styles.Green(s.featureAppend))
 	cmdMatch(s.featureAppend)
-	gittown.Append(s.featureBranch)
+	err = gittown.Append(s.featureBranch)
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
 	fmt.Printf(messages.Start_Feature_Tree, s.mainBranch)
 	fmt.Printf(messages.Start_Feature_Refactor, styles.Green(s.refactorBranch))
 
 	// Making changes to refactor
-	var err error
 	err = git.Checkout(s.refactorBranch)
 	if err != nil {
 		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
@@ -172,7 +183,6 @@ func (s *Start) shipRefactor() {
 	cmdMatch(s.refactorShip)
 
 	err := gittown.Ship(s.refactorBranch)
-
 	if err != nil {
 		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
 	}
@@ -205,7 +215,6 @@ func (s *Start) commitAll() {
 		Default:   messages.Git_Default_Commit_Msg,
 		AllowEdit: false,
 	})
-
 	if err != nil {
 		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
 	}
@@ -226,18 +235,24 @@ func cmdMatch(match string) {
 		Label:    "Command",
 		MatchVal: utils.RemoveNonPrintables(match),
 	})
-
 	if err != nil {
 		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
 	}
 }
 
 func confirmChanges() {
-	dialog.Confirm("Finished")
+	var err error
+	_, err = dialog.Confirm("Finished")
+	if err != nil {
+		utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+	}
 	changes, _ := git.GetNumOfChanges()
 	for changes < 1 {
 		fmt.Println(messages.No_Changes)
-		dialog.Confirm("Finished")
+		_, err = dialog.Confirm("Finished")
+		if err != nil {
+			utils.Exit(fmt.Sprintf(messages.Generic_Error, err), 1)
+		}
 		changes, _ = git.GetNumOfChanges()
 	}
 }

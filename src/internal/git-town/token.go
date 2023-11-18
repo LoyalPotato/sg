@@ -7,7 +7,7 @@ import (
 const TokenKey = "git-town.github-token"
 
 func AddGithubToken(token string, logRun bool) error {
-	return git.AddConfig(git.GitConfig{
+	return git.AddConfig(git.Config{
 		Key:    TokenKey,
 		Value:  token,
 		LogRun: logRun,

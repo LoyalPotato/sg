@@ -14,7 +14,7 @@ type MatchPromptArgs struct {
 	MatchVal string
 }
 
-// Creates a prompt that is valid when the value is the same as the default
+// Creates a prompt that is valid when the value is the same as the default.
 func Match(args *MatchPromptArgs) (string, error) {
 	prompt := promptui.Prompt{
 		Label: args.Label,
@@ -39,21 +39,22 @@ func Match(args *MatchPromptArgs) (string, error) {
 
 // Confirm prompt
 //
-// Returns bool value, if confirmed, and error value
+// Returns bool value, if confirmed, and error value.
 func Confirm(label string) (bool, error) {
 	prompt := promptui.Prompt{
 		Label:       label,
 		IsConfirm:   true,
 		HideEntered: true,
 	}
+
 	_, err := prompt.Run()
 
-	switch err {
-	case promptui.ErrAbort:
+	if errors.Is(err, promptui.ErrAbort) {
 		return false, err
-	case promptui.ErrInterrupt:
-		os.Exit(utils.EXIT_CODE_INTERRUPT)
+	} else if errors.Is(err, promptui.ErrInterrupt) {
+		os.Exit(utils.ExitCodeInterrupt)
 	}
+
 	return true, err
 }
 
@@ -73,7 +74,7 @@ type TextPromptArgs struct {
 	Templates *promptui.PromptTemplates
 }
 
-// Text prompt
+// Text prompt.
 func Text(args *TextPromptArgs) (output string, err error) {
 	prompt := promptui.Prompt{
 		Label:       args.Label,

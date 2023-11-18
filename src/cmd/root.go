@@ -34,12 +34,12 @@ func rootCmd() cobra.Command {
 		DisableAutoGenTag: true,
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			if err := git.IsGitRepo(); err != nil {
-				fmt.Println(messages.NotGitEnv)
+				fmt.Println(messages.Not_Git_Env)
 				os.Exit(1)
 			}
 
 			if !gittown.IsInstalled() {
-				fmt.Println(messages.NoGitTown)
+				fmt.Println(messages.No_Git_Town)
 				os.Exit(1)
 			}
 		},

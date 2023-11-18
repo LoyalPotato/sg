@@ -16,7 +16,6 @@ func GetNumOfChanges() (int, error) {
 	}
 
 	changes, err := utils.LineCounter(strings.NewReader(string(output)))
-
 	if err != nil {
 		return 0, err
 	}

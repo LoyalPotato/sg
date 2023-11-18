@@ -1,8 +1,8 @@
 package messages
 
 const (
-	NotGitEnv              = "Not running in a git repository.\nUse git init to initialize a repository in the current folder."
-	NoGitTown              = "Git town is not installed.\nPlease follow the instructions on the installation page of git town."
+	Not_Git_Env            = "Not running in a git repository.\nUse git init to initialize a repository in the current folder."
+	No_Git_Town            = "Git town is not installed.\nPlease follow the instructions on the installation page of git town."
 	Git_Commit             = "Insert commit message"
 	Git_Default_Commit_Msg = "Default commit message"
 	Git_Add_All            = "Staging all changes to current branch"
@@ -105,7 +105,7 @@ Let's merge it into %s. We can do it with the %s command in git-town:
 `
 	Start_Finished = `And that's it!
 
-Stacking workflow allows you to separate PRs that adhere to the single responsability principle, leading to smaller PRs.
+Stacking workflow allows you to separate PRs that adhere to the single responsabillity principle, leading to smaller PRs.
 It also allows you to work faster since you can continue chaining features while waiting for review/approval.
 
 This workflow can be achieved with just the commands of git, but git-town is a nice wrapper around git with some extra functionalities that make it easier to follow this workflow, like the %s command.

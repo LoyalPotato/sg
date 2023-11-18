@@ -7,7 +7,7 @@ import (
 const MainBranchKey = "git-town.main-branch-name"
 
 func AddMainBranchConfig(brachName string, logRun bool) error {
-	return git.AddConfig(git.GitConfig{
+	return git.AddConfig(git.Config{
 		Key:    MainBranchKey,
 		Value:  brachName,
 		LogRun: logRun,

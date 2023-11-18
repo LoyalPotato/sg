@@ -1,16 +1,18 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
 )
 
 // Find more about exit codes here: https://tldp.org/LDP/abs/html/exitcodes.html
-const EXIT_CODE_INTERRUPT int = 130
+const ExitCodeInterrupt int = 130
 
 func GetExitCode(err error) int {
-	if exitError, ok := err.(*exec.ExitError); ok {
+	var exitError *exec.ExitError
+	if errors.As(err, &exitError) {
 		return exitError.ExitCode()
 	}
 
