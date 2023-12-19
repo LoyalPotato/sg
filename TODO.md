@@ -16,6 +16,11 @@ I can't work with the go package. It doesn't seem like it was made for that :(
 - [x] In setup, ask for what the main branch is. Gittown needs this configured else it'll fail when running the cmd in the cli?
 - [x] Add goreleaser
 
+- [ ] Add tests
+    - [ ] Make a CI runner for tests
+    - [ ] Test whatever packages I can
+        - [ ] Can I test promptui?
+
 ### Later
 
 - [x] Man pages, markdown docs [cobra](https://github.com/spf13/cobra/blob/main/site/content/docgen/_index.md)
