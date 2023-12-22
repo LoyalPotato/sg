@@ -12,7 +12,13 @@ permissions:
   # packages: write
 
 jobs:
+  lint:
+    uses: ./.github/workflows/golangci-lint.yaml
+  tests:
+    needs: [lint]
+    uses: ./.github/workflows/tests.yml
   goreleaser:
+    needs: [tests]
     runs-on: ubuntu-latest
     steps:
       - 
@@ -24,7 +30,7 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: stable
+          go-version-file: go.mod
       - 
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
