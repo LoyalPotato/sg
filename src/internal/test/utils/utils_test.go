@@ -70,7 +70,23 @@ func TestLineCounter(t *testing.T) {
 		}
 
 		if lines != 0 {
-			t.Fatalf(`LineCounter with reader for %q didn't return 0 lines`, s)
+			t.Fatalf(`LineCounter with reader for %q didn't return 0 lines. Returned instead %d`, s, lines)
+		}
+	})
+
+	t.Run("string has 2 lines", func(t *testing.T) {
+		s := `line one
+        line two
+        `
+		sReader := strings.NewReader(s)
+		lines, err := utils.LineCounter(sReader)
+		want := 2
+		if err != nil {
+			t.Fatalf(`LineCounter error occurred: %v`, err)
+		}
+
+		if lines != want {
+			t.Fatalf(`LineCounter with reader for %q didn't return %d lines. Returned instead %d`, s, want, lines)
 		}
 	})
 }
